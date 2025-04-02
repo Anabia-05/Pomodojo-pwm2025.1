@@ -43,3 +43,23 @@ export async function addFilmes(novoFilme) {
   }
   return null;
 }
+
+export async function deleteFilme(filmeDeletado) {
+  try {
+    const response = await axios.delete(
+      urlFilme + "/" + filmeDeletado.objectId,
+      {
+        headers: headers,
+      }
+    );
+    if (response.status === 200) {
+      return response.data;
+    } else {
+      console.log("status:", response.status);
+      console.log("statusText:", response.statusText);
+    }
+  } catch (err) {
+    console.log("deleteFilmes err:", err);
+  }
+  return null;
+}

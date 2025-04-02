@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { addFilmes, getFilmes } from "./api";
+import { addFilmes, getFilmes,deleteFilme } from "./api";
 
 import Header from "./components/Header";
 import { Filmes } from "./components/Filmes";
@@ -70,7 +70,14 @@ function App() {
 
       <ul>
         {filmes.map((filme) => (
-          <Filmes key={filme.objectId} filme={filme} />
+          <Filmes key={filme.objectId} filme={filme} 
+          onDeleteClick={async () => {
+            const filmeDeletado = await deleteFilme(filme);
+            console.log("filmeDeletado", filmeDeletado);
+            if (filmeDeletado) {
+              carregarFilme();
+            }
+          }}/>
         ))}
       </ul>
     </>
