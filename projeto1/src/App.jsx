@@ -1,40 +1,52 @@
 import { useEffect, useState } from "react";
-import { addFilmes, getFilmes,deleteFilme } from "./api";
+import { addEvento, getEventos, deleteEvento } from "./api";
 
 import Header from "./components/Header";
-import { Filmes } from "./components/Filmes";
+import { Eventos } from "./components/Eventos";
 
-function App() {
-  const [filmes, setFilmes] = useState([]);
-  const [NomeFilme, setNomeF] = useState("");
-  const [Comentario, setComentario] = useState("");
-  const [Avaliacao, setAvaliacao] = useState(0); // Deve ser um número
-  const [Assistido, setAssistido] = useState(false); // Adicionado
+export function App() {
+  const [eventos, setEventos] = useState([]);
+  const [NomeEvt, setNomeEvt] = useState("");
+  const [Descricao, setDescricao] = useState("");
+  const [Data, setData] = useState(""); // Tipo date
+  const [Local, setLocal] = useState("");
+  const [Status, setStatus] = useState(false); 
 
-  async function carregarFilme() {
-    const filmesTemp = await getFilmes();
-    setFilmes(filmesTemp);
+  async function carregarEventos() {
+    const eventosTemp = await getEventos();
+    setEventos(eventosTemp);
   }
 
-  async function adicionarFilme() {
-    if (!NomeFilme.trim()) {
-      alert("Preencha o campo Nome Filme");
+  async function adicionarEvento() {
+    if (!NomeEvt.trim()) {
+      alert("Preencha o campo Nome do Evento");
       return;
     }
 
-    const novoFilme = await addFilmes({ NomeFilme, Comentario, Assistido, Avaliacao });
-    if (novoFilme) {
-      console.log("Filme adicionado:", novoFilme);
-      setNomeF("");
-      setComentario("");
-      setAvaliacao();
-      setAssistido(false);
-      await carregarFilme();
+    const novoEvento = await addEvento({
+      NomeEvt,
+      Descricao,
+      Data: { 
+        "__type": "Date", 
+        "iso": new Date(Data).toISOString() // Garante que a data esteja no formato aceito
+      },
+      Local,
+      Status
+    });
+    
+    if (novoEvento) {
+      console.log("Evento adicionado:", novoEvento);
+      setNomeEvt("");
+      setDescricao("");
+      setData("");
+      setLocal("");
+      setStatus(false);
+      await carregarEventos();
     }
   }
 
   useEffect(() => {
-    carregarFilme();
+    carregarEventos();
   }, []);
 
   return (
@@ -42,40 +54,45 @@ function App() {
       <Header />
       <p>
         <input
-          placeholder="Nome do Filme"
-          value={NomeFilme}
-          onChange={(evt) => setNomeF(evt.target.value)}
+          placeholder="Nome do Evento"
+          value={NomeEvt}
+          onChange={(evt) => setNomeEvt(evt.target.value)}
         />
         <input
-          placeholder="Comentário"
-          value={Comentario}
-          onChange={(evt) => setComentario(evt.target.value)}
+          placeholder="Descrição"
+          value={Descricao}
+          onChange={(evt) => setDescricao(evt.target.value)}
         />
         <input
-          type="number"
-          placeholder="Avaliação (0-5)"
-          value={Avaliacao}
-          onChange={(evt) => setAvaliacao(evt.target.valueAsNumber || 0)}
+          type="date"
+          placeholder="Data"
+          value={Data}
+          onChange={(evt) => setData(evt.target.value)}
+        />
+        <input
+          placeholder="Local"
+          value={Local}
+          onChange={(evt) => setLocal(evt.target.value)}
         />
         <label>
           <input
             type="checkbox"
-            checked={Assistido}
-            onChange={(evt) => setAssistido(evt.target.checked)}
+            checked={Status}
+            onChange={(evt) => setStatus(evt.target.checked)}
           />
-          Assistido
+          Evento Ativo
         </label>
-        <button onClick={adicionarFilme}>Adicionar</button>
+        <button onClick={adicionarEvento}>Adicionar</button>
       </p>
 
       <ul>
-        {filmes.map((filme) => (
-          <Filmes key={filme.objectId} filme={filme} 
+        {eventos.map((evento) => (
+          <Eventos key={evento.objectId} evento={evento} 
           onDeleteClick={async () => {
-            const filmeDeletado = await deleteFilme(filme);
-            console.log("filmeDeletado", filmeDeletado);
-            if (filmeDeletado) {
-              carregarFilme();
+            const eventoDeletado = await deleteEvento(evento);
+            console.log("eventoDeletado", eventoDeletado);
+            if (eventoDeletado) {
+              carregarEventos();
             }
           }}/>
         ))}

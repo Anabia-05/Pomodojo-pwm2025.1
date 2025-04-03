@@ -1,53 +1,53 @@
 import axios from "axios";
 
-const urlFilme = "https://parseapi.back4app.com/classes/DadosFilmes";
+const urlEvento = "https://parseapi.back4app.com/classes/Eventos";
 const headers = {
   'X-Parse-Application-Id': 'y252xv9Jnq4yizmwdMoY9zmbrxOOLZVL3GHtEZYZ',
-  'X-Parse-REST-API-Key': 'ufZphZCaRGrpPEHErZtPKQ67mwnGlduk2aUqrAxI',
-    
+    'X-Parse-REST-API-Key': 'ufZphZCaRGrpPEHErZtPKQ67mwnGlduk2aUqrAxI',
 };
 const headersJson = {
   ...headers,
   "Content-Type": "application/json",
 };
 
-export async function getFilmes() {
+export async function getEventos() {
   try {
-    const response = await axios.get(urlFilme, { headers: headers });
+    const response = await axios.get(urlEvento, { headers: headers });
     if (response.status / 100 === 2) {
-      console.log("filmes", response.data.results);
+      console.log("eventos", response.data.results);
       return response.data.results;
     } else {
       console.log("status:", response.status);
       console.log("statusText:", response.statusText);
     }
   } catch (err) {
-    console.log("getFilmes err:", err);
+    console.log("getEventos err:", err);
   }
   return [];
 }
 
-export async function addFilmes(novoFilme) {
+export async function addEvento(novoEvento) {
   try {
-    const response = await axios.post(urlFilme, novoFilme, {
+    console.log("Enviando evento:", JSON.stringify(novoEvento, null, 2));
+    const response = await axios.post(urlEvento, novoEvento, {
       headers: headersJson,
     });
     if (response.status === 201) {
-      return { ...novoFilme, ...response.data };
+      return { ...novoEvento, ...response.data };
     } else {
       console.log("status:", response.status);
       console.log("statusText:", response.statusText);
     }
   } catch (err) {
-    console.log("addFilmes err:", err);
+    console.log("addEvento err:", err);
   }
   return null;
 }
 
-export async function deleteFilme(filmeDeletado) {
+export async function deleteEvento(eventoDeletado) {
   try {
     const response = await axios.delete(
-      urlFilme + "/" + filmeDeletado.objectId,
+      urlEvento + "/" + eventoDeletado.objectId,
       {
         headers: headers,
       }
@@ -59,7 +59,7 @@ export async function deleteFilme(filmeDeletado) {
       console.log("statusText:", response.statusText);
     }
   } catch (err) {
-    console.log("deleteFilmes err:", err);
+    console.log("deleteEvento err:", err);
   }
   return null;
 }
