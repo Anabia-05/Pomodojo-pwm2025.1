@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { addEvento, getEventos, deleteEvento } from "./api";
-
+import './App.css'
 import Header from "./components/Header";
 import { Eventos } from "./components/Eventos";
 
@@ -52,7 +52,8 @@ export function App() {
   return (
     <>
       <Header />
-      <p>
+      <div className="conteiner">
+        <p>
         <input
           placeholder="Nome do Evento"
           value={NomeEvt}
@@ -85,7 +86,7 @@ export function App() {
         <button onClick={adicionarEvento}>Adicionar</button>
       </p>
 
-      <ul>
+      <ul className="lista-eventos">
         {eventos.map((evento) => (
           <Eventos key={evento.objectId} evento={evento} 
           onDeleteClick={async () => {
@@ -97,6 +98,7 @@ export function App() {
           }}/>
         ))}
       </ul>
+      </div>
     </>
   );
 }

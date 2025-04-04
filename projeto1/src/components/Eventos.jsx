@@ -1,10 +1,10 @@
 export function Eventos({ evento, onDeleteClick }) {
     return (
-        <li>
+        <li className="evento-item">
             <strong>{evento.NomeEvt}</strong>  
             {evento.Descricao && <> - {evento.Descricao}</>}  
             ({evento.Status ? " Ativo" : " Inativo"})  
-            <button onClick={onDeleteClick}>X</button>
+            <button className="butao-escluir" onClick={onDeleteClick}>X</button>
         </li>
     );
 }
