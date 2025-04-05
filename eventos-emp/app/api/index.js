@@ -2,8 +2,8 @@ import axios from "axios";
 
 const urlEvento = "https://parseapi.back4app.com/classes/Eventos";
 const headers = {
-  'X-Parse-Application-Id': 'y252xv9Jnq4yizmwdMoY9zmbrxOOLZVL3GHtEZYZ',
-    'X-Parse-REST-API-Key': 'ufZphZCaRGrpPEHErZtPKQ67mwnGlduk2aUqrAxI',
+  "X-Parse-Application-Id": "y252xv9Jnq4yizmwdMoY9zmbrxOOLZVL3GHtEZYZ",
+  "X-Parse-REST-API-Key": "ufZphZCaRGrpPEHErZtPKQ67mwnGlduk2aUqrAxI",
 };
 const headersJson = {
   ...headers,
@@ -61,5 +61,24 @@ export async function deleteEvento(eventoDeletado) {
   } catch (err) {
     console.log("deleteEvento err:", err);
   }
+  return null;
+}
+
+export async function getEventosPorId(id) {
+  try {
+    const response = await axios.get(`${urlEvento}/${id}`, {
+      headers: headers,
+    });
+
+    if (response.status === 200) {
+      return response.data;
+    } else {
+      console.log("status:", response.status);
+      console.log("statusText:", response.statusText);
+    }
+  } catch (err) {
+    console.log("getEventoPorId:", err);
+  }
+
   return null;
 }
