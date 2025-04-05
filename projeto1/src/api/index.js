@@ -3,7 +3,7 @@ import axios from "axios";
 const urlEvento = "https://parseapi.back4app.com/classes/Eventos";
 const headers = {
   'X-Parse-Application-Id': 'y252xv9Jnq4yizmwdMoY9zmbrxOOLZVL3GHtEZYZ',
-    'X-Parse-REST-API-Key': 'ufZphZCaRGrpPEHErZtPKQ67mwnGlduk2aUqrAxI',
+  'X-Parse-REST-API-Key': 'ufZphZCaRGrpPEHErZtPKQ67mwnGlduk2aUqrAxI',
 };
 const headersJson = {
   ...headers,

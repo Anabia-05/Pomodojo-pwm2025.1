@@ -1,0 +1,60 @@
+body{
+    background-color: #a8c3d4;
+}
+
+.container {
+    background-color: #acc7dd;
+    height: 100vh;
+    width: 100%;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+
+.icone{
+    width: 80px;
+    height: 80px;
+    background-image: url('./star.png');
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+    animation: anima 5s linear infinite;
+    animation-duration: calc(300s / var(--i));
+    z-index: 0;
+}
+
+.content{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    z-index: 1;
+    pointer-events: none;
+}
+
+.entreAqui {
+    background-color: #738fbd;
+    height: 40px;
+    width: 180px;
+    border-radius: 25px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1;
+    pointer-events: auto;
+}
+
+@keyframes anima{
+    0%{
+        transform: translateY(-100vh) scale(0) rotate(0deg)
+    }
+    100%{
+        transform: translateY(110vh) scale(1) rotate(360deg)
+    }
+}

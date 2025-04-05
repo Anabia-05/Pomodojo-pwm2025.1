@@ -1,0 +1,12 @@
+header {
+    display: flex;
+    justify-content: center; /* centraliza horizontalmente */
+    align-items: center;     /* centraliza verticalmente */
+    height: 10vh;           /* ocupa a altura inteira da tela */
+    background-color: #dbe8f5; /* opcional: cor de fundo */
+  }
+  
+  header h1 {
+    color: #333;
+  }
+  
