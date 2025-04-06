@@ -1,5 +1,5 @@
 import axios from "axios";
-import Parse from "parse";
+
 
 const urlEvento = "https://parseapi.back4app.com/classes/Eventos";
 const headers = {
@@ -12,9 +12,6 @@ const headersJson = {
 };
 
 
-
-Parse.initialize("y252xv9Jnq4yizmwdMoY9zmbrxOOLZVL3GHtEZYZ", "1vBaGqMBudDhIyPk2ttwb64HLuGldk2gjjx5lWdm");
-Parse.serverURL = "https://parseapi.back4app.com";
 
 
 export async function getEventos() {
@@ -94,17 +91,6 @@ export async function deleteEvento(eventoDeletado) {
 }
 
 
-export async function getEventoById(id) {
-  const Evento = Parse.Object.extend("Eventos"); 
-  const query = new Parse.Query(Evento);
 
-  try {
-    const resultado = await query.get(id); 
-    return resultado.toJSON(); 
-  } catch (error) {
-    console.error("Erro ao buscar evento por ID:", error);
-    return null;
-  }
-}
 
 
