@@ -1,4 +1,4 @@
-'use client';
+"use client";
 
 import { useEffect, useState } from "react";
 import { useParams } from "next/navigation";
@@ -60,10 +60,19 @@ export default function EventoDetalhes() {
       <Header />
       <h3>Detalhes do Evento</h3>
       <ul>
-        <li><strong>Nome:</strong> {evento.NomeEvt}</li>
-        <li><strong>Descrição:</strong> {evento.Descricao}</li>
-        <li><strong>Data:</strong> {new Date(evento.Data.iso).toLocaleDateString()}</li>
-        <li><strong>Local:</strong> {evento.Local}</li>
+        <li>
+          <strong>Nome:</strong> {evento.NomeEvt}
+        </li>
+        <li>
+          <strong>Descrição:</strong> {evento.Descricao}
+        </li>
+        <li>
+          <strong>Data:</strong>{" "}
+          {new Date(evento.Data.iso).toLocaleDateString()}
+        </li>
+        <li>
+          <strong>Local:</strong> {evento.Local}
+        </li>
         <li>
           <strong>Status:</strong> {evento.Status ? "Ativo" : "Inativo"}
           <button onClick={alternarStatus} disabled={atualizando}>
