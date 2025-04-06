@@ -91,6 +91,22 @@ export async function deleteEvento(eventoDeletado) {
 }
 
 
+export async function getEventoById(id) {
+  try {
+    const response = await axios.get(`${urlEvento}/${id}`, {
+      headers: headers,
+    });
+    if (response.status === 200) {
+      return response.data;
+    } else {
+      console.log("status:", response.status);
+      console.log("statusText:", response.statusText);
+    }
+  } catch (err) {
+    console.log("getEventoById err:", err);
+  }
+  return null;
+}
 
 
 
