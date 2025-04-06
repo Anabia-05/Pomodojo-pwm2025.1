@@ -1,4 +1,5 @@
 import axios from "axios";
+import Parse from "parse";
 
 const urlEvento = "https://parseapi.back4app.com/classes/Eventos";
 const headers = {
@@ -9,6 +10,12 @@ const headersJson = {
   ...headers,
   "Content-Type": "application/json",
 };
+
+
+
+Parse.initialize("y252xv9Jnq4yizmwdMoY9zmbrxOOLZVL3GHtEZYZ", "1vBaGqMBudDhIyPk2ttwb64HLuGldk2gjjx5lWdm");
+Parse.serverURL = "https://parseapi.back4app.com";
+
 
 export async function getEventos() {
   try {
@@ -44,6 +51,28 @@ export async function addEvento(novoEvento) {
   return null;
 }
 
+export async function updateEvento(eventoAtualizado) {
+  delete eventoAtualizado.createdAt;
+  delete eventoAtualizado.updatedAt;
+  try {
+    const response = await axios.put(
+      `${urlEvento}/${eventoAtualizado.objectId}`,
+      eventoAtualizado,
+      {
+        headers: headersJson,
+      }
+    );
+    if (response.status === 200) {
+      return { ...eventoAtualizado, ...response.data };
+    } else {
+      console.log("updateEvento status:", response.status);
+      console.log("updateEvento statusText:", response.statusText);
+    }
+  } catch (err) {
+    console.log("updateEvento err:", err);
+  }
+  return null;
+}
 export async function deleteEvento(eventoDeletado) {
   try {
     const response = await axios.delete(
@@ -64,21 +93,18 @@ export async function deleteEvento(eventoDeletado) {
   return null;
 }
 
-export async function getEventosPorId(id) {
+
+export async function getEventoById(id) {
+  const Evento = Parse.Object.extend("Eventos"); 
+  const query = new Parse.Query(Evento);
+
   try {
-    const response = await axios.get(`${urlEvento}/${id}`, {
-      headers: headers,
-    });
-
-    if (response.status === 200) {
-      return response.data;
-    } else {
-      console.log("status:", response.status);
-      console.log("statusText:", response.statusText);
-    }
-  } catch (err) {
-    console.log("getEventoPorId:", err);
+    const resultado = await query.get(id); 
+    return resultado.toJSON(); 
+  } catch (error) {
+    console.error("Erro ao buscar evento por ID:", error);
+    return null;
   }
-
-  return null;
 }
+
+
