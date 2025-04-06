@@ -32,6 +32,23 @@ export default function EventoDetalhes() {
     if (id) carregarEventoPorId(id);
   }, [id]);
 
+  async function alternarStatus() {
+    try {
+      const Evento = Parse.Object.extend("Eventos");
+      const query = new Parse.Query(Evento);
+      const eventoObj = await query.get(id);
+
+      const novoStatus = !evento.Status;
+      eventoObj.set("Status", novoStatus);
+      const eventoAtualizado = await eventoObj.save();
+
+      setEvento(eventoAtualizado.toJSON());
+      
+    } catch (error) {
+      console.error("Erro ao atualizar status:", error);
+    }
+  }
+
   if (loading) {
     return (
       <>
@@ -62,6 +79,9 @@ export default function EventoDetalhes() {
         <li><strong>Local:</strong> {evento.Local}</li>
         <li><strong>Status:</strong> {evento.Status ? "Ativo" : "Inativo"}</li>
       </ul>
+      <button onClick={alternarStatus}>
+        Alterar Status
+      </button>
     </>
   );
 }
