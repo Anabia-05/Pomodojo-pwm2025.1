@@ -5,14 +5,13 @@ import { addEvento, getEventos, deleteEvento } from "../api";
 import "./page.css";
 import Header from "@/components/Header";
 import Eventos from "@/components/Eventos";
-import FormularioAdicionar from "@/components/FormularioAdicionar"; 
-
+import FormularioAdicionar from "@/components/FormularioAdicionar";
 
 export function App() {
   const [eventos, setEventos] = useState([]);
   const [NomeEvt, setNomeEvt] = useState("");
   const [Descricao, setDescricao] = useState("");
-  const [Data, setData] = useState(""); 
+  const [Data, setData] = useState("");
   const [Local, setLocal] = useState("");
   const [mostrarFormulario, setMostrarFormulario] = useState(false);
   const [Status, setStatus] = useState(false);
@@ -33,7 +32,7 @@ export function App() {
       Descricao,
       Data: {
         __type: "Date",
-        iso: new Date(Data).toISOString(), 
+        iso: new Date(Data).toISOString(),
       },
       Local,
       Status: true,
@@ -58,12 +57,13 @@ export function App() {
     <>
       <Header />
       <div className="conteiner">
-        
-        <div className="floating-button" onClick={() => setMostrarFormulario(!mostrarFormulario)}>
+        <div
+          className="floating-button"
+          onClick={() => setMostrarFormulario(!mostrarFormulario)}
+        >
           +
         </div>
-  
-        
+
         {mostrarFormulario && (
           <FormularioAdicionar
             NomeEvt={NomeEvt}
@@ -75,10 +75,10 @@ export function App() {
             Local={Local}
             setLocal={setLocal}
             adicionarEvento={adicionarEvento}
+            onClose={() => setMostrarFormulario(false)} // <- aqui a mágica
           />
         )}
-  
-        
+
         <ul className="lista-eventos">
           {eventos.map((evento) => (
             <Eventos
@@ -97,7 +97,6 @@ export function App() {
       </div>
     </>
   );
-  
 }
 
 export default App;

@@ -1,16 +1,24 @@
+import "./FormularioAdicionar.css";
+
 const FormularioAdicionar = ({
-    NomeEvt,
-    setNomeEvt,
-    Descricao,
-    setDescricao,
-    Data,
-    setData,
-    Local,
-    setLocal,
-    adicionarEvento,
-  }) => {
-    return (
-      <div className="formulario-adicionar">
+  NomeEvt,
+  setNomeEvt,
+  Descricao,
+  setDescricao,
+  Data,
+  setData,
+  Local,
+  setLocal,
+  adicionarEvento,
+  onClose,
+}) => {
+  return (
+    <div className="modal-overlay">
+      <div className="modal-content">
+        <button className="fechar-modal" onClick={onClose}>
+          ×
+        </button>
+        <h2>Adicionar Evento</h2>
         <input
           placeholder="Nome do Evento"
           value={NomeEvt}
@@ -23,7 +31,6 @@ const FormularioAdicionar = ({
         />
         <input
           type="date"
-          placeholder="Data"
           value={Data}
           onChange={(evt) => setData(evt.target.value)}
         />
@@ -32,9 +39,17 @@ const FormularioAdicionar = ({
           value={Local}
           onChange={(evt) => setLocal(evt.target.value)}
         />
-        <button onClick={adicionarEvento}>Adicionar</button>
+        <button
+          onClick={() => {
+            adicionarEvento();
+            onClose();
+          }}
+        >
+          Adicionar
+        </button>
       </div>
-    );
-  };
+    </div>
+  );
+};
 
 export default FormularioAdicionar;
