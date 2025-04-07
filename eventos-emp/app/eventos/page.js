@@ -56,6 +56,11 @@ export function App() {
   return (
     <>
       <Header />
+
+      <div className="titulo">
+        <h3>Lista de eventos</h3>
+      </div>
+
       <div className="conteiner">
         <div
           className="floating-button"

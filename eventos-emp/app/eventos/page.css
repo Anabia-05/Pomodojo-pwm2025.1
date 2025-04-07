@@ -1,5 +1,6 @@
 body {
   background-color: #a8c3d4;
+  font-family: Georgia, 'Times New Roman', Times, serif;
 }
 
 .conteiner {
@@ -8,16 +9,17 @@ body {
   justify-content: center;
   padding: 30px;
   margin: 100px auto;
-  background-color: #7898ac;
+  background-color: #5c7bac;
   box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
   max-width: 800px;
   width: 100%;
+  margin-top: 30px;
 }
 
 .conteiner button {
   padding: 8px 16px;
   margin: 5px;
-  background-color: #3c4e62;
+  background-color: #5c7bac;
   color: white;
   border: none;
   border-radius: 4px;
@@ -37,7 +39,7 @@ body {
 }
 
 .lista-eventos li {
-  background-color: #6e90c4;
+  background-color: #8eb9d3;
   border: 1px solid #ccc;
   border-radius: 10px;
   padding: 20px;
@@ -65,4 +67,53 @@ body {
   cursor: pointer;
   box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
   z-index: 999;
+}
+
+.titulo {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 40px;
+  font-size: 25px;
+  text-shadow: 2px 2px #5c7bac;
+}
+
+.botoes-evento {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+.botoes-evento button {
+  background-color: #3c4e62;
+  color: white;
+  padding: 8px 12px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.botoes-evento button:hover {
+  background-color: #1e2731;
+}
+
+.eventos{
+  width: 100%;
+  padding: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+}
+
+.lixeira {
+  margin-left: 20px;
+  width: 24px;
+  height: 24px;
+  cursor: pointer;
+}
+
+.lixeira:hover {
+  transform: scale(1.1);
 }

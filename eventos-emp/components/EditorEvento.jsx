@@ -54,117 +54,130 @@ export default function EditorEvento({ evento, onEventoAtualizado }) {
         {modoEdicao ? "Cancelar Edição" : "Editar Evento"}
       </button>
 
-      {modoEdicao && (
-        <ul style={{ marginTop: "1rem" }}>
-          <li>
-            <strong>Nome:</strong>{" "}
-            {editandoCampo === "NomeEvt" ? (
-              <>
-                <input
-                  value={novoValor}
-                  onChange={(e) => setNovoValor(e.target.value)}
-                />
-                <button onClick={salvarCampo} disabled={atualizando}>
-                  Salvar
-                </button>
-              </>
-            ) : (
-              <>
-                {evento.NomeEvt}{" "}
+      <ul style={{ marginTop: "1rem" }}>
+        {/* Nome */}
+        <li>
+          <strong>Nome:</strong>{" "}
+          {editandoCampo === "NomeEvt" ? (
+            <>
+              <input
+                value={novoValor}
+                onChange={(e) => setNovoValor(e.target.value)}
+              />
+              <button onClick={salvarCampo} disabled={atualizando}>
+                Salvar
+              </button>
+            </>
+          ) : (
+            <>
+              {evento.NomeEvt}{" "}
+              {modoEdicao && (
                 <button onClick={() => iniciarEdicao("NomeEvt")}>Editar</button>
-              </>
-            )}
-          </li>
+              )}
+            </>
+          )}
+        </li>
 
-          <li>
-            <strong>Descrição:</strong>{" "}
-            {editandoCampo === "Descricao" ? (
-              <>
-                <input
-                  value={novoValor}
-                  onChange={(e) => setNovoValor(e.target.value)}
-                />
-                <button onClick={salvarCampo} disabled={atualizando}>
-                  Salvar
-                </button>
-              </>
-            ) : (
-              <>
-                {evento.Descricao}{" "}
+        {/* Descrição */}
+        <li>
+          <strong>Descrição:</strong>{" "}
+          {editandoCampo === "Descricao" ? (
+            <>
+              <input
+                value={novoValor}
+                onChange={(e) => setNovoValor(e.target.value)}
+              />
+              <button onClick={salvarCampo} disabled={atualizando}>
+                Salvar
+              </button>
+            </>
+          ) : (
+            <>
+              {evento.Descricao}{" "}
+              {modoEdicao && (
                 <button onClick={() => iniciarEdicao("Descricao")}>
                   Editar
                 </button>
-              </>
-            )}
-          </li>
+              )}
+            </>
+          )}
+        </li>
 
-          <li>
-            <strong>Data:</strong>{" "}
-            {editandoCampo === "Data" ? (
-              <>
-                <input
-                  type="date"
-                  value={novoValor}
-                  onChange={(e) => setNovoValor(e.target.value)}
-                />
-                <button onClick={salvarCampo} disabled={atualizando}>
-                  Salvar
-                </button>
-              </>
-            ) : (
-              <>
-                {new Date(evento.Data.iso).toLocaleDateString("pt-BR", {
-                  timeZone: "UTC",
-                })}{" "}
+        {/* Data */}
+        <li>
+          <strong>Data:</strong>{" "}
+          {editandoCampo === "Data" ? (
+            <>
+              <input
+                type="date"
+                value={novoValor}
+                onChange={(e) => setNovoValor(e.target.value)}
+              />
+              <button onClick={salvarCampo} disabled={atualizando}>
+                Salvar
+              </button>
+            </>
+          ) : (
+            <>
+              {new Date(evento.Data.iso).toLocaleDateString("pt-BR", {
+                timeZone: "UTC",
+              })}{" "}
+              {modoEdicao && (
                 <button onClick={() => iniciarEdicao("Data")}>Editar</button>
-              </>
-            )}
-          </li>
+              )}
+            </>
+          )}
+        </li>
 
-          <li>
-            <strong>Local:</strong>{" "}
-            {editandoCampo === "Local" ? (
-              <>
-                <input
-                  value={novoValor}
-                  onChange={(e) => setNovoValor(e.target.value)}
-                />
-                <button onClick={salvarCampo} disabled={atualizando}>
-                  Salvar
-                </button>
-              </>
-            ) : (
-              <>
-                {evento.Local}{" "}
+        {/* Local */}
+        <li>
+          <strong>Local:</strong>{" "}
+          {editandoCampo === "Local" ? (
+            <>
+              <input
+                value={novoValor}
+                onChange={(e) => setNovoValor(e.target.value)}
+              />
+              <button onClick={salvarCampo} disabled={atualizando}>
+                Salvar
+              </button>
+            </>
+          ) : (
+            <>
+              {evento.Local}{" "}
+              {modoEdicao && (
                 <button onClick={() => iniciarEdicao("Local")}>Editar</button>
-              </>
-            )}
-          </li>
+              )}
+            </>
+          )}
+        </li>
 
-          <li>
-            <strong>Status:</strong>{" "}
-            {editandoCampo === "Status" ? (
-              <>
-                <select
-                  value={novoValor ? "ativo" : "inativo"}
-                  onChange={(e) => setNovoValor(e.target.value === "ativo")}
-                >
-                  <option value="ativo">Ativo</option>
-                  <option value="inativo">Inativo</option>
-                </select>
-                <button onClick={salvarCampo} disabled={atualizando}>
-                  Salvar
-                </button>
-              </>
-            ) : (
-              <>
-                {evento.Status ? "Ativo" : "Inativo"}{" "}
+        {/* Status */}
+        <li>
+          <strong>Status:</strong>{" "}
+          {editandoCampo === "Status" ? (
+            <>
+              <select
+                value={novoValor ? "ativo" : "inativo"}
+                onChange={(e) => setNovoValor(e.target.value === "ativo")}
+              >
+                <option value="ativo">Ativo</option>
+                <option value="inativo">Inativo</option>
+              </select>
+              <button onClick={salvarCampo} disabled={atualizando}>
+                Salvar
+              </button>
+            </>
+          ) : (
+            <>
+              {evento.Status ? "Ativo" : "Inativo"}{" "}
+              {modoEdicao && (
                 <button onClick={() => iniciarEdicao("Status")}>Editar</button>
-              </>
-            )}
-          </li>
-        </ul>
-      )}
+              )}
+            </>
+          )}
+        </li>
+      </ul>
     </>
   );
 }
