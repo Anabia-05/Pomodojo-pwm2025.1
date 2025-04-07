@@ -5,13 +5,16 @@ import { addEvento, getEventos, deleteEvento } from "../api";
 import "./page.css";
 import Header from "@/components/Header";
 import Eventos from "@/components/Eventos";
+import FormularioAdicionar from "@/components/FormularioAdicionar"; 
+
 
 export function App() {
   const [eventos, setEventos] = useState([]);
   const [NomeEvt, setNomeEvt] = useState("");
   const [Descricao, setDescricao] = useState("");
-  const [Data, setData] = useState(""); // Tipo date
+  const [Data, setData] = useState(""); 
   const [Local, setLocal] = useState("");
+  const [mostrarFormulario, setMostrarFormulario] = useState(false);
   const [Status, setStatus] = useState(false);
 
   async function carregarEventos() {
@@ -30,7 +33,7 @@ export function App() {
       Descricao,
       Data: {
         __type: "Date",
-        iso: new Date(Data).toISOString(), // Garante que a data esteja no formato aceito
+        iso: new Date(Data).toISOString(), 
       },
       Local,
       Status: true,
@@ -55,31 +58,27 @@ export function App() {
     <>
       <Header />
       <div className="conteiner">
-        <p>
-          <input
-            placeholder="Nome do Evento"
-            value={NomeEvt}
-            onChange={(evt) => setNomeEvt(evt.target.value)}
+        
+        <div className="floating-button" onClick={() => setMostrarFormulario(!mostrarFormulario)}>
+          +
+        </div>
+  
+        
+        {mostrarFormulario && (
+          <FormularioAdicionar
+            NomeEvt={NomeEvt}
+            setNomeEvt={setNomeEvt}
+            Descricao={Descricao}
+            setDescricao={setDescricao}
+            Data={Data}
+            setData={setData}
+            Local={Local}
+            setLocal={setLocal}
+            adicionarEvento={adicionarEvento}
           />
-          <input
-            placeholder="Descrição"
-            value={Descricao}
-            onChange={(evt) => setDescricao(evt.target.value)}
-          />
-          <input
-            type="date"
-            placeholder="Data"
-            value={Data}
-            onChange={(evt) => setData(evt.target.value)}
-          />
-          <input
-            placeholder="Local"
-            value={Local}
-            onChange={(evt) => setLocal(evt.target.value)}
-          />
-          <button onClick={adicionarEvento}>Adicionar</button>
-        </p>
-
+        )}
+  
+        
         <ul className="lista-eventos">
           {eventos.map((evento) => (
             <Eventos
@@ -98,6 +97,7 @@ export function App() {
       </div>
     </>
   );
+  
 }
 
 export default App;
