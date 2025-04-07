@@ -5,7 +5,7 @@ Este é um projeto desenvolvido em **React** com o objetivo de criar um sistema 
 ## Tecnologias Utilizadas
 
 - **React.js** 
-- **JavaScript ** 
+- **JavaScript** 
 - **HTML & CSS** 
 - **Back4app**
 
