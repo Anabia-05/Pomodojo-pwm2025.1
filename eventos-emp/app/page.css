@@ -1,7 +1,3 @@
-body{
-    background-color: #a8c3d4;
-}
-
 .container {
     background-color: #acc7dd;
     height: 100vh;
@@ -25,8 +21,11 @@ body{
     z-index: 0;
 }
 
-.content{
+.conteudo{
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    text-shadow: 1.5px 0.5px #5c7bac;
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
     position: absolute;
@@ -38,16 +37,20 @@ body{
     pointer-events: none;
 }
 
-.entreAqui {
+button {
     background-color: #738fbd;
-    height: 40px;
-    width: 180px;
-    border-radius: 25px;
+    border: none;
+    height: 60px;
+    width: 210px;
+    border-radius: 35px;
     display: flex;
     justify-content: center;
     align-items: center;
     z-index: 1;
     pointer-events: auto;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-size: 23px;
+    margin-top: 35px;
 }
 
 @keyframes anima{
@@ -57,4 +60,22 @@ body{
     100%{
         transform: translateY(110vh) scale(1) rotate(360deg)
     }
+}
+
+h1{
+    position: relative;
+    margin-bottom: 13px;
+    margin-top: 10px;
+    font-size: 60px;
+    text-shadow: 2px 1.5px #5c7bac;  
+}
+
+h2{
+    font-size: 30px;
+    position: relative;
+    text-shadow: 2px 1.5px #5c7bac;
+}
+
+.acessar button:hover{
+    background-color: #557ab5;
 }

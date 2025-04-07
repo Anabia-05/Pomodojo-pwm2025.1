@@ -32,9 +32,14 @@ export default function Home() {
       <span className="icone" style={{ "--i": 72 }}></span>
 
 
-      <div className="content">
-        <div className="entreAqui">
-          <Link href="/eventos">Entre aqui</Link>
+      <div className="conteudo">
+
+        <h2>Bem vindo ao</h2>
+        <h1>Gerenciador de Eventos</h1>
+        <h2>da sua empresa!</h2>
+
+        <div className="acessar">
+          <button>Acessar</button>
         </div>
       </div>
     </div>
