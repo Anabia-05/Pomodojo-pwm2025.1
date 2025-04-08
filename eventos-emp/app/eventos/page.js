@@ -2,19 +2,19 @@
 
 import { useEffect, useState } from "react";
 import { addEvento, getEventos, deleteEvento } from "../api";
-import "./page.css";
 import Header from "@/components/Header";
 import Eventos from "@/components/Eventos";
 import FormularioAdicionar from "@/components/FormularioAdicionar";
+import BotaoGoogleCalendar from "@/components/BotaoGoogleCalendar";
+import "./page.css";
 
-export function App() {
+export default function App() {
   const [eventos, setEventos] = useState([]);
   const [NomeEvt, setNomeEvt] = useState("");
   const [Descricao, setDescricao] = useState("");
   const [Data, setData] = useState("");
   const [Local, setLocal] = useState("");
   const [mostrarFormulario, setMostrarFormulario] = useState(false);
-  const [Status, setStatus] = useState(false);
 
   async function carregarEventos() {
     const eventosTemp = await getEventos();
@@ -39,12 +39,10 @@ export function App() {
     });
 
     if (novoEvento) {
-      console.log("Evento adicionado:", novoEvento);
       setNomeEvt("");
       setDescricao("");
       setData("");
       setLocal("");
-      setStatus(false);
       await carregarEventos();
     }
   }
@@ -57,8 +55,8 @@ export function App() {
     <>
       <Header />
 
-      <div className="titulo">
-        <h3>Lista de eventos</h3>
+      <div className="titulo my-4">
+        <h3 className="text-xl">Lista de eventos</h3>
       </div>
 
       <div className="conteiner">
@@ -80,28 +78,25 @@ export function App() {
             Local={Local}
             setLocal={setLocal}
             adicionarEvento={adicionarEvento}
-            onClose={() => setMostrarFormulario(false)} // <- aqui a mágica
+            onClose={() => setMostrarFormulario(false)}
           />
         )}
 
-        <ul className="lista-eventos">
-          {eventos.map((evento) => (
+      <ul className="lista-eventos">
+        {eventos.map((evento) => (
+          <li key={evento.objectId} className="border-b pb-2">
             <Eventos
-              key={evento.objectId}
               evento={evento}
               onDeleteClick={async () => {
                 const eventoDeletado = await deleteEvento(evento);
-                console.log("eventoDeletado", eventoDeletado);
-                if (eventoDeletado) {
-                  carregarEventos();
-                }
+                if (eventoDeletado) carregarEventos();
               }}
             />
-          ))}
-        </ul>
+            <BotaoGoogleCalendar evento={evento} />
+          </li>
+        ))}
+      </ul>
       </div>
     </>
   );
 }
-
-export default App;
