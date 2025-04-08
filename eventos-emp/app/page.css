@@ -1,5 +1,5 @@
 .container {
-  background-color: #acc7dd;
+  background-color: #3680a6;
   height: 100vh;
   width: 100%;
   overflow: hidden;
@@ -23,7 +23,7 @@
 
 .conteudo {
   font-family: Georgia, "Times New Roman", Times, serif;
-  text-shadow: 1.5px 0.5px #5c7bac;
+  text-shadow: 1.5px 0.5px rgb(46, 85, 147);
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -38,7 +38,7 @@
 }
 
 button {
-  background-color: #738fbd;
+  background-color: #5ea4dd;
   border: none;
   height: 60px;
   width: 210px;
@@ -53,6 +53,12 @@ button {
   margin-top: 35px;
 }
 
+button a {
+  color: #f9f9e2;
+  text-shadow: 1px 0.5px rgb(63, 102, 164);
+  text-decoration: none;
+}
+
 @keyframes anima {
   0% {
     transform: translateY(-100vh) scale(0) rotate(0deg);
@@ -63,21 +69,22 @@ button {
 }
 
 h1 {
+  color: #fafae0;
   position: relative;
   margin-bottom: 13px;
   margin-top: 10px;
   font-size: 60px;
-  text-shadow: 2px 1.5px #5c7bac;
+  text-shadow: 2px 1.5px rgb(46, 85, 147);
 }
 
 h2 {
   font-size: 30px;
   position: relative;
-  text-shadow: 2px 1.5px #5c7bac;
+  text-shadow: 2px 1.5px rgb(46, 85, 147);
 }
 
 .acessar button:hover {
-  background-color: #557ab5;
+  background-color: #4a8dc4;
 }
 
 .acessar button:hover {
