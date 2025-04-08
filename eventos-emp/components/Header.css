@@ -1,9 +1,15 @@
 header {
-  background-color: #738fbd;
+  background-color: #154c79;
   display: flex;
   justify-content: center;
+<<<<<<< HEAD
   align-items: center;
   height: 10vh;
+=======
+  align-items: center; 
+  height: 10vh;
+  text-shadow: 2px 1.5px #3d629e;
+>>>>>>> f91e4d48da0ea4b429e91a7d7b394d0d80eee846
 }
 
 header h1 {
