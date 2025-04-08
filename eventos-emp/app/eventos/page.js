@@ -5,7 +5,6 @@ import { addEvento, getEventos, deleteEvento } from "../api";
 import Header from "@/components/Header";
 import Eventos from "@/components/Eventos";
 import FormularioAdicionar from "@/components/FormularioAdicionar";
-import BotaoGoogleCalendar from "@/components/BotaoGoogleCalendar";
 import "./page.css";
 
 export default function App() {
@@ -82,20 +81,19 @@ export default function App() {
           />
         )}
 
-      <ul className="lista-eventos">
-        {eventos.map((evento) => (
-          <li key={evento.objectId} className="border-b pb-2">
-            <Eventos
-              evento={evento}
-              onDeleteClick={async () => {
-                const eventoDeletado = await deleteEvento(evento);
-                if (eventoDeletado) carregarEventos();
-              }}
-            />
-            <BotaoGoogleCalendar evento={evento} />
-          </li>
-        ))}
-      </ul>
+        <ul className="lista-eventos">
+          {eventos.map((evento) => (
+            <li key={evento.objectId} className="border-b pb-2">
+              <Eventos
+                evento={evento}
+                onDeleteClick={async () => {
+                  const eventoDeletado = await deleteEvento(evento);
+                  if (eventoDeletado) carregarEventos();
+                }}
+              />
+            </li>
+          ))}
+        </ul>
       </div>
     </>
   );

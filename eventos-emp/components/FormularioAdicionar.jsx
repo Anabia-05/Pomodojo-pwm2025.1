@@ -39,14 +39,17 @@ const FormularioAdicionar = ({
           value={Local}
           onChange={(evt) => setLocal(evt.target.value)}
         />
-        <button className="adicionar"
-          onClick={() => {
-            adicionarEvento();
-            onClose();
-          }}
-        >
-          Adicionar
-        </button>
+        <div className="botaoAdicionar">
+          <button
+            className="adicionar"
+            onClick={() => {
+              adicionarEvento();
+              onClose();
+            }}
+          >
+            Adicionar
+          </button>
+        </div>
       </div>
     </div>
   );

@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { updateEvento } from "@/app/api";
 import "./EditorEvento.css";
+import BotaoGoogleCalendar from "@/components/BotaoGoogleCalendar";
 
 export default function EditorEvento({ evento, onEventoAtualizado }) {
   const [editandoCampo, setEditandoCampo] = useState(null);
@@ -51,13 +52,17 @@ export default function EditorEvento({ evento, onEventoAtualizado }) {
 
   return (
     <div className="container-editor">
-      <button
-        className="botaoPrincipal"
-        onClick={() => setModoEdicao(!modoEdicao)}
-      >
-        {modoEdicao ? "Sair Modo Edição " : "Editar Evento"}
-      </button>
-
+      <div className="botoesEvento">
+        <button
+          className="botaoPrincipal"
+          onClick={() => setModoEdicao(!modoEdicao)}
+        >
+          {modoEdicao ? "Sair Modo Edição " : "Editar Evento"}
+        </button>
+        <div className="adicionarGoogle">
+          <BotaoGoogleCalendar evento={evento} />
+        </div>
+      </div>
       <ul className="informacao">
         <li>
           <div className={`linhaInfo ${modoEdicao ? "modo-Edicao" : ""}`}>
