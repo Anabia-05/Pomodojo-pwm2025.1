@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { updateEvento } from "@/app/api";
+import "./EditorEvento.css";
 
 export default function EditorEvento({ evento, onEventoAtualizado }) {
   const [editandoCampo, setEditandoCampo] = useState(null);
@@ -49,13 +50,15 @@ export default function EditorEvento({ evento, onEventoAtualizado }) {
   };
 
   return (
-    <>
-      <button onClick={() => setModoEdicao(!modoEdicao)}>
+    <div className="container-editor">
+      <button
+        className="botaoPrincipal"
+        onClick={() => setModoEdicao(!modoEdicao)}
+      >
         {modoEdicao ? "Cancelar Edição" : "Editar Evento"}
       </button>
 
-      <ul style={{ marginTop: "1rem" }}>
-        {/* Nome */}
+      <ul className="informacao">
         <li>
           <strong>Nome:</strong>{" "}
           {editandoCampo === "NomeEvt" ? (
@@ -70,15 +73,19 @@ export default function EditorEvento({ evento, onEventoAtualizado }) {
             </>
           ) : (
             <>
-              {evento.NomeEvt}{" "}
+              {evento.NomeEvt}
               {modoEdicao && (
-                <button onClick={() => iniciarEdicao("NomeEvt")}>Editar</button>
+                <img
+                  src="/lapis.png"
+                  alt="Editar"
+                  className="iconeEditar"
+                  onClick={() => iniciarEdicao("NomeEvt")}
+                />
               )}
             </>
           )}
         </li>
 
-        {/* Descrição */}
         <li>
           <strong>Descrição:</strong>{" "}
           {editandoCampo === "Descricao" ? (
@@ -93,17 +100,19 @@ export default function EditorEvento({ evento, onEventoAtualizado }) {
             </>
           ) : (
             <>
-              {evento.Descricao}{" "}
+              {evento.Descricao}
               {modoEdicao && (
-                <button onClick={() => iniciarEdicao("Descricao")}>
-                  Editar
-                </button>
+                <img
+                  src="/lapis.png"
+                  alt="Editar"
+                  className="iconeEditar"
+                  onClick={() => iniciarEdicao("Descricao")}
+                />
               )}
             </>
           )}
         </li>
 
-        {/* Data */}
         <li>
           <strong>Data:</strong>{" "}
           {editandoCampo === "Data" ? (
@@ -121,15 +130,19 @@ export default function EditorEvento({ evento, onEventoAtualizado }) {
             <>
               {new Date(evento.Data.iso).toLocaleDateString("pt-BR", {
                 timeZone: "UTC",
-              })}{" "}
+              })}
               {modoEdicao && (
-                <button onClick={() => iniciarEdicao("Data")}>Editar</button>
+                <img
+                  src="/lapis.png"
+                  alt="Editar"
+                  className="iconeEditar"
+                  onClick={() => iniciarEdicao("Data")}
+                />
               )}
             </>
           )}
         </li>
 
-        {/* Local */}
         <li>
           <strong>Local:</strong>{" "}
           {editandoCampo === "Local" ? (
@@ -144,15 +157,19 @@ export default function EditorEvento({ evento, onEventoAtualizado }) {
             </>
           ) : (
             <>
-              {evento.Local}{" "}
+              {evento.Local}
               {modoEdicao && (
-                <button onClick={() => iniciarEdicao("Local")}>Editar</button>
+                <img
+                  src="/lapis.png"
+                  alt="Editar"
+                  className="iconeEditar"
+                  onClick={() => iniciarEdicao("Local")}
+                />
               )}
             </>
           )}
         </li>
 
-        {/* Status */}
         <li>
           <strong>Status:</strong>{" "}
           {editandoCampo === "Status" ? (
@@ -170,14 +187,19 @@ export default function EditorEvento({ evento, onEventoAtualizado }) {
             </>
           ) : (
             <>
-              {evento.Status ? "Ativo" : "Inativo"}{" "}
+              {evento.Status ? "Ativo" : "Inativo"}
               {modoEdicao && (
-                <button onClick={() => iniciarEdicao("Status")}>Editar</button>
+                <img
+                  src="/lapis.png"
+                  alt="Editar"
+                  className="iconeEditar"
+                  onClick={() => iniciarEdicao("Status")}
+                />
               )}
             </>
           )}
         </li>
       </ul>
-    </>
+    </div>
   );
 }

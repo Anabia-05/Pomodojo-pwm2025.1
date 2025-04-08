@@ -1,0 +1,41 @@
+.botaoPrincipal {
+  width: 160px;
+  height: 60px;
+  margin-bottom: 20px;
+  display: block;
+  margin: 10 auto 10px auto;
+  padding: 10px 16px;
+  background-color: #354455;
+  color: White;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: bold;
+  font-size: 15px;
+}
+
+.botaoPrincipal:hover {
+  background-color: #212a34;
+}
+
+.informacao {
+  margin-top: 10px;
+}
+
+.iconeEditar {
+  margin-left: 20px;
+  width: 30px;
+  height: 30px;
+  background-color: #d5c88e;
+  border-radius: 6px;
+  padding: 6px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 0.2s;
+}
+
+.iconeEditar:hover {
+  background-color: #beb27f;
+}

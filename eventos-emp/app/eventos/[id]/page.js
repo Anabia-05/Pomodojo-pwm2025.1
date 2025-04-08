@@ -4,7 +4,8 @@ import { useEffect, useState } from "react";
 import { useParams } from "next/navigation";
 import Header from "@/components/Header";
 import { getEventoById } from "@/app/api";
-import EditorEvento from "@/components/EditorEvento"; // aqui
+import EditorEvento from "@/components/EditorEvento";
+import "./page.css";
 
 export default function EventoDetalhes() {
   const { id } = useParams();
@@ -43,8 +44,10 @@ export default function EventoDetalhes() {
   return (
     <>
       <Header />
-      <h3>Detalhes do Evento</h3>
-      <EditorEvento evento={evento} onEventoAtualizado={setEvento} />
+      <h3 className="h3">Detalhes do Evento</h3>
+      <div className="caixaEvento">
+        <EditorEvento evento={evento} onEventoAtualizado={setEvento} />
+      </div>
     </>
   );
 }
