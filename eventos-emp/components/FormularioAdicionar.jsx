@@ -39,7 +39,7 @@ const FormularioAdicionar = ({
           value={Local}
           onChange={(evt) => setLocal(evt.target.value)}
         />
-        <button
+        <button className="adicionar"
           onClick={() => {
             adicionarEvento();
             onClose();
