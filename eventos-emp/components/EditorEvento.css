@@ -3,10 +3,10 @@
   height: 60px;
   margin-bottom: 20px;
   display: block;
-  margin: 10 auto 10px auto;
+  margin: 10px auto;
   padding: 10px 16px;
-  background-color: #354455;
-  color: White;
+  background-color: #d5c88e;
+  color: #212a34;
   border: none;
   border-radius: 8px;
   cursor: pointer;
@@ -15,15 +15,28 @@
 }
 
 .botaoPrincipal:hover {
-  background-color: #212a34;
+  background-color: #b4a873;
 }
 
-.informacao {
-  margin-top: 10px;
+.linhaInfo {
+  display: flex;
+  align-items: center;
+  margin-bottom: 12px;
+  gap: 7;
+}
+
+.linhaInfo.modo-Edicao {
+  width: 100%;
+  justify-content: space-between;
+}
+
+.linhaInfo.modo-Edicao .iconeEditar {
+  margin-left: auto;
 }
 
 .iconeEditar {
-  margin-left: 20px;
+  margin-left: 350px;
+  margin-bottom: 15px;
   width: 30px;
   height: 30px;
   background-color: #d5c88e;

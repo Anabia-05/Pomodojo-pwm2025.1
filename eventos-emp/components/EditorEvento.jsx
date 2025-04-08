@@ -55,149 +55,159 @@ export default function EditorEvento({ evento, onEventoAtualizado }) {
         className="botaoPrincipal"
         onClick={() => setModoEdicao(!modoEdicao)}
       >
-        {modoEdicao ? "Cancelar Edição" : "Editar Evento"}
+        {modoEdicao ? "Sair Modo Edição " : "Editar Evento"}
       </button>
 
       <ul className="informacao">
         <li>
-          <strong>Nome:</strong>{" "}
-          {editandoCampo === "NomeEvt" ? (
-            <>
-              <input
-                value={novoValor}
-                onChange={(e) => setNovoValor(e.target.value)}
-              />
-              <button onClick={salvarCampo} disabled={atualizando}>
-                Salvar
-              </button>
-            </>
-          ) : (
-            <>
-              {evento.NomeEvt}
-              {modoEdicao && (
-                <img
-                  src="/lapis.png"
-                  alt="Editar"
-                  className="iconeEditar"
-                  onClick={() => iniciarEdicao("NomeEvt")}
+          <div className={`linhaInfo ${modoEdicao ? "modo-Edicao" : ""}`}>
+            <strong>Nome:</strong>{" "}
+            {editandoCampo === "NomeEvt" ? (
+              <>
+                <input
+                  value={novoValor}
+                  onChange={(e) => setNovoValor(e.target.value)}
                 />
-              )}
-            </>
-          )}
+                <button onClick={salvarCampo} disabled={atualizando}>
+                  Salvar
+                </button>
+              </>
+            ) : (
+              <>
+                {evento.NomeEvt}
+                {modoEdicao && (
+                  <img
+                    src="/lapis.png"
+                    alt="Editar"
+                    className="iconeEditar"
+                    onClick={() => iniciarEdicao("NomeEvt")}
+                  />
+                )}
+              </>
+            )}
+          </div>
         </li>
 
         <li>
-          <strong>Descrição:</strong>{" "}
-          {editandoCampo === "Descricao" ? (
-            <>
-              <input
-                value={novoValor}
-                onChange={(e) => setNovoValor(e.target.value)}
-              />
-              <button onClick={salvarCampo} disabled={atualizando}>
-                Salvar
-              </button>
-            </>
-          ) : (
-            <>
-              {evento.Descricao}
-              {modoEdicao && (
-                <img
-                  src="/lapis.png"
-                  alt="Editar"
-                  className="iconeEditar"
-                  onClick={() => iniciarEdicao("Descricao")}
+          <div className={`linhaInfo ${modoEdicao ? "modo-Edicao" : ""}`}>
+            <strong>Descrição:</strong>{" "}
+            {editandoCampo === "Descricao" ? (
+              <>
+                <input
+                  value={novoValor}
+                  onChange={(e) => setNovoValor(e.target.value)}
                 />
-              )}
-            </>
-          )}
+                <button onClick={salvarCampo} disabled={atualizando}>
+                  Salvar
+                </button>
+              </>
+            ) : (
+              <>
+                {evento.Descricao}
+                {modoEdicao && (
+                  <img
+                    src="/lapis.png"
+                    alt="Editar"
+                    className="iconeEditar"
+                    onClick={() => iniciarEdicao("Descricao")}
+                  />
+                )}
+              </>
+            )}
+          </div>
         </li>
 
         <li>
-          <strong>Data:</strong>{" "}
-          {editandoCampo === "Data" ? (
-            <>
-              <input
-                type="date"
-                value={novoValor}
-                onChange={(e) => setNovoValor(e.target.value)}
-              />
-              <button onClick={salvarCampo} disabled={atualizando}>
-                Salvar
-              </button>
-            </>
-          ) : (
-            <>
-              {new Date(evento.Data.iso).toLocaleDateString("pt-BR", {
-                timeZone: "UTC",
-              })}
-              {modoEdicao && (
-                <img
-                  src="/lapis.png"
-                  alt="Editar"
-                  className="iconeEditar"
-                  onClick={() => iniciarEdicao("Data")}
+          <div className={`linhaInfo ${modoEdicao ? "modo-Edicao" : ""}`}>
+            <strong>Data:</strong>{" "}
+            {editandoCampo === "Data" ? (
+              <>
+                <input
+                  type="date"
+                  value={novoValor}
+                  onChange={(e) => setNovoValor(e.target.value)}
                 />
-              )}
-            </>
-          )}
+                <button onClick={salvarCampo} disabled={atualizando}>
+                  Salvar
+                </button>
+              </>
+            ) : (
+              <>
+                {new Date(evento.Data.iso).toLocaleDateString("pt-BR", {
+                  timeZone: "UTC",
+                })}
+                {modoEdicao && (
+                  <img
+                    src="/lapis.png"
+                    alt="Editar"
+                    className="iconeEditar"
+                    onClick={() => iniciarEdicao("Data")}
+                  />
+                )}
+              </>
+            )}
+          </div>
         </li>
 
         <li>
-          <strong>Local:</strong>{" "}
-          {editandoCampo === "Local" ? (
-            <>
-              <input
-                value={novoValor}
-                onChange={(e) => setNovoValor(e.target.value)}
-              />
-              <button onClick={salvarCampo} disabled={atualizando}>
-                Salvar
-              </button>
-            </>
-          ) : (
-            <>
-              {evento.Local}
-              {modoEdicao && (
-                <img
-                  src="/lapis.png"
-                  alt="Editar"
-                  className="iconeEditar"
-                  onClick={() => iniciarEdicao("Local")}
+          <div className={`linhaInfo ${modoEdicao ? "modo-Edicao" : ""}`}>
+            <strong>Local:</strong>{" "}
+            {editandoCampo === "Local" ? (
+              <>
+                <input
+                  value={novoValor}
+                  onChange={(e) => setNovoValor(e.target.value)}
                 />
-              )}
-            </>
-          )}
+                <button onClick={salvarCampo} disabled={atualizando}>
+                  Salvar
+                </button>
+              </>
+            ) : (
+              <>
+                {evento.Local}
+                {modoEdicao && (
+                  <img
+                    src="/lapis.png"
+                    alt="Editar"
+                    className="iconeEditar"
+                    onClick={() => iniciarEdicao("Local")}
+                  />
+                )}
+              </>
+            )}
+          </div>
         </li>
 
         <li>
-          <strong>Status:</strong>{" "}
-          {editandoCampo === "Status" ? (
-            <>
-              <select
-                value={novoValor ? "ativo" : "inativo"}
-                onChange={(e) => setNovoValor(e.target.value === "ativo")}
-              >
-                <option value="ativo">Ativo</option>
-                <option value="inativo">Inativo</option>
-              </select>
-              <button onClick={salvarCampo} disabled={atualizando}>
-                Salvar
-              </button>
-            </>
-          ) : (
-            <>
-              {evento.Status ? "Ativo" : "Inativo"}
-              {modoEdicao && (
-                <img
-                  src="/lapis.png"
-                  alt="Editar"
-                  className="iconeEditar"
-                  onClick={() => iniciarEdicao("Status")}
-                />
-              )}
-            </>
-          )}
+          <div className={`linhaInfo ${modoEdicao ? "modo-Edicao" : ""}`}>
+            <strong>Status:</strong>{" "}
+            {editandoCampo === "Status" ? (
+              <>
+                <select
+                  value={novoValor ? "ativo" : "inativo"}
+                  onChange={(e) => setNovoValor(e.target.value === "ativo")}
+                >
+                  <option value="ativo">Ativo</option>
+                  <option value="inativo">Inativo</option>
+                </select>
+                <button onClick={salvarCampo} disabled={atualizando}>
+                  Salvar
+                </button>
+              </>
+            ) : (
+              <>
+                {evento.Status ? "Ativo" : "Inativo"}
+                {modoEdicao && (
+                  <img
+                    src="/lapis.png"
+                    alt="Editar"
+                    className="iconeEditar"
+                    onClick={() => iniciarEdicao("Status")}
+                  />
+                )}
+              </>
+            )}
+          </div>
         </li>
       </ul>
     </div>
