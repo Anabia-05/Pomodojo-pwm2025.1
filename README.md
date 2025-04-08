@@ -10,6 +10,6 @@ Este é um projeto desenvolvido em **React** com o objetivo de criar um sistema 
 - **Back4app**
 
 ## Integrantes
-- Ana Beatriz de Lima Romero
-- Júlia Saldanha Vilar
-- Pedro Marques Bezerra dos Santos
+- Ana Beatriz de Lima Romero - 00000850038
+- Júlia Saldanha Vilar - 00000848900
+- Pedro Marques Bezerra dos Santos - 00000849416
